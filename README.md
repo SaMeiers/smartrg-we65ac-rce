@@ -51,6 +51,18 @@ in clear text. The two issues can be chained, so an attacker with access to the
 panel port can go from an unauthenticated request to root. That config leak is a
 separate bug and is not covered by the exploit here.
 
+## Firmware
+
+The full 8 MB flash and the extracted partitions are in the
+[firmware-v1.0.1 release](https://github.com/SaMeiers/smartrg-we65ac-rce/releases/tag/firmware-v1.0.1):
+complete flash, bootloader, kernel, rootfs partition, decompressed `vmlinux`,
+extracted rootfs tarball and `SHA256SUMS`.
+
+The bootloader block holds factory data for the unit in clear text, including
+the serial number and the default web and WiFi credentials. Those are the
+values shipped from the factory, not the ones in use on the network where the
+device was tested.
+
 ## Fix
 
 There is no fixed firmware for this model that I know of. The last build is from
